@@ -38,3 +38,29 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 
 }
+
+// this function for now only check the validity of
+// a form that submits an email. It could expanded to
+// check the validity of any other kind of forms in the 
+// project, by passing it more broader parameters
+export function formValidation(form, emailInput) {
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    emailInput.setCustomValidity("");
+
+    if (emailInput.validity.valueMissing) {
+      emailInput.setCustomValidity("Please enter your email address.");
+    } else if (emailInput.validity.typeMismatch) {
+      emailInput.setCustomValidity("Please enter a valid email address.");
+    }
+
+    if (!emailInput.checkValidity()) {
+      emailInput.reportValidity();
+      return;
+    }
+
+    alert("Congratulations, your registration was completed. Thank you!");
+    emailInput.value = "";
+  });
+}
