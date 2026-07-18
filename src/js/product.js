@@ -5,17 +5,15 @@ import ProductDetails from "./ProductDetails.mjs";
 const dataSource = new ProductData("tents");
 const productId = getParam("product");
 
-const product = new ProductDetails(productId, dataSource)
+const product = new ProductDetails(productId, dataSource);
 product.init();
 // console.log(product)
-
 
 // function addProductToCart(product) {
 //   const cartItems = getLocalStorage("so-cart") || [];
 //   cartItems.push(this.product);
 //   setLocalStorage("so-cart", cartItems);
 // }
-
 
 // // add to cart button event handler
 // async function addToCartHandler(e) {
